@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
+        initView();
     }
 
-    private void init() {
+    private void initView() {
         firstView= (FirstView) findViewById(R.id.first_view);
         startBtn = (Button) findViewById(R.id.start_btn);
         endBtn = (Button) findViewById(R.id.end_btn);
