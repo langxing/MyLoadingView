@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="FirstView">
+        <attr name="firstColor" format="color"></attr>
+        <attr name="secondColor" format="color"></attr>
+    </declare-styleable>
+
+
+</resources>
