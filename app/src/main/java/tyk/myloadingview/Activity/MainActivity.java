@@ -2,6 +2,7 @@ package tyk.myloadingview.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import tyk.myloadingview.R;
@@ -22,6 +23,18 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         firstView= (FirstView) findViewById(R.id.first_view);
         startBtn = (Button) findViewById(R.id.start_btn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firstView.startAnimation();
+            }
+        });
         endBtn = (Button) findViewById(R.id.end_btn);
+        endBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firstView.endAnimation();
+            }
+        });
     }
 }
