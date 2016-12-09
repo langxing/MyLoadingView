@@ -11,26 +11,47 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_margin="5dp">
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <tyk.myloadingview.View.CircleColorView
             android:id="@+id/first_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             app:firstColor="@color/colorPrimary"
             app:secondColor="@color/colorAccent" />
 
 
+        <tyk.myloadingview.View.CircleMoveView
+            android:id="@+id/second_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:firstColor="@color/colorPrimary"
+            app:secondColor="@color/colorAccent" />
+
     </LinearLayout>
 
 
-    <tyk.myloadingview.View.CircleMoveView
-        android:id="@+id/second_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:firstColor="@color/colorPrimary"
-        app:secondColor="@color/colorAccent" />
+        android:layout_height="60dp"
+        android:padding="5dp"
+        android:weightSum="2">
+
+
+        <tyk.myloadingview.View.CircleSmileView
+            android:id="@+id/third_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:firstColor="@color/colorPrimary" />
+
+    </LinearLayout>
 
 
     <LinearLayout
