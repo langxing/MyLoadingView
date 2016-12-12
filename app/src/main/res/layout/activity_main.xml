@@ -51,6 +51,13 @@
             android:layout_weight="1"
             app:firstColor="@color/colorPrimary" />
 
+        <tyk.myloadingview.View.CircleRotateView
+            android:id="@+id/four_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:firstColor="@color/colorPrimary" />
+
     </LinearLayout>
 
 

@@ -27,8 +27,8 @@ public class CircleSmileView extends View {
     private int firstColor;
     private int mWidth, mHeight;
     private Paint mPaint;
-    private ValueAnimator startAnimator, sweepAnimator, degreeAnimation;
-    private float startAngle, sweepAngle, degree;
+    private ValueAnimator startAnimator, sweepAnimator, degreeAnimation, pointXAnimation, pointYAnimation, pointAnimation;
+    private float startAngle, sweepAngle, degree, pointX, pointY, point;
     private AnimatorSet animatorSet;
     private boolean isShowSmile;
 
@@ -91,6 +91,9 @@ public class CircleSmileView extends View {
         }
         mWidth = width;
         mHeight = height;
+        pointX = mHeight / 3;
+        point = mHeight / 3;
+        pointY = 0;
         setMeasuredDimension(width, height);
     }
 
@@ -106,8 +109,8 @@ public class CircleSmileView extends View {
         float r = mHeight / 3;
 
         if (isShowSmile) {
-            canvas.drawPoint(-mHeight / 4, -mHeight / 4, mPaint);
-            canvas.drawPoint(mHeight / 4, -mHeight / 4, mPaint);
+            canvas.drawPoint(-pointX, -pointY, mPaint);
+            canvas.drawPoint(point, -pointY, mPaint);
         }
 
 
@@ -158,7 +161,7 @@ public class CircleSmileView extends View {
         animatorSet = new AnimatorSet();
         animatorSet.play(startAnimator).with(sweepAnimator).after(degreeAnimation);
         animatorSet.setInterpolator(new LinearInterpolator());
-        animatorSet.setDuration(1500);
+        animatorSet.setDuration(1000);
         animatorSet.start();
         animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
@@ -169,7 +172,9 @@ public class CircleSmileView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 isShowSmile = true;
-                invalidate();
+                pointXAnimation.start();
+                pointYAnimation.start();
+                pointAnimation.start();
             }
 
             @Override
@@ -183,12 +188,46 @@ public class CircleSmileView extends View {
             }
         });
 
+        pointXAnimation = ValueAnimator.ofFloat(mHeight / 3, mHeight / 4);
+        pointXAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                pointX = (float) animation.getAnimatedValue();
+                invalidate();
+            }
+
+        });
+        pointXAnimation.setDuration(1000);
+
+        pointAnimation = ValueAnimator.ofFloat(mHeight / 3, mHeight / 4);
+        pointAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                point = (float) animation.getAnimatedValue();
+                invalidate();
+            }
+
+        });
+        pointAnimation.setDuration(1000);
+
+        pointYAnimation = ValueAnimator.ofFloat(0, mHeight / 4);
+        pointYAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                pointY = (float) animation.getAnimatedValue();
+                invalidate();
+            }
+
+        });
+        pointYAnimation.setDuration(1000);
+
     }
 
     public void endAnimation() {
         animatorSet.end();
-
-
+        pointXAnimation.end();
+        pointYAnimation.end();
+        pointAnimation.end();
     }
 
     @Override
