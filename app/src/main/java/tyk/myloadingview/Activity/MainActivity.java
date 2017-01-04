@@ -8,6 +8,7 @@ import android.widget.Button;
 import tyk.myloadingview.R;
 import tyk.myloadingview.View.CircleColorView;
 import tyk.myloadingview.View.CircleMoveView;
+import tyk.myloadingview.View.CircleProgressView;
 import tyk.myloadingview.View.CircleRotateView;
 import tyk.myloadingview.View.CircleSmileView;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private CircleMoveView circleMoveView;
     private CircleSmileView circleSmileView;
     private CircleRotateView circleRotateView;
+    private CircleProgressView circleProgressView;
 
 
     @Override
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         circleMoveView = (CircleMoveView) findViewById(R.id.second_view);
         circleSmileView = (CircleSmileView) findViewById(R.id.third_view);
         circleRotateView = (CircleRotateView) findViewById(R.id.four_view);
+        circleProgressView = (CircleProgressView) findViewById(R.id.five_view);
         startBtn = (Button) findViewById(R.id.start_btn);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 circleMoveView.startAnimation();
                 circleSmileView.startAnimation();
                 circleRotateView.startAnimation();
+                circleProgressView.startAnimation();
 
             }
         });
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 circleMoveView.endAnimation();
                 circleSmileView.endAnimation();
                 circleRotateView.endAnimation();
+                circleProgressView.endAnimation();
             }
         });
     }

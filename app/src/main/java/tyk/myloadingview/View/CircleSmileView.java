@@ -13,8 +13,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import java.util.Map;
-
 import tyk.myloadingview.R;
 
 /**
@@ -234,6 +232,14 @@ public class CircleSmileView extends View {
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
         if (!hasWindowFocus) {
+            endAnimation();
+        }
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        if (visibility != VISIBLE) {
             endAnimation();
         }
     }
